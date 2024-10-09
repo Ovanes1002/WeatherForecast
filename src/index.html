@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="css/style.min.css" />
+        <title>WeatherForecast</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__inner container">
+                <a href="" class="header__logo logo">
+                    <img class="logo__image" src="./images/cloud.png" alt="cloud" loading="lazy" />
+                </a>
+                <div class="header__theme theme">
+                    <label class="theme__label" for="theme">Тема:</label>
+                    <select class="theme__select theme__select--light" id="theme" name="theme">
+                        <option class="theme__option" value="light">Светлая</option>
+                        <option class="theme__option" value="dark">Тёмная</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+        <div class="search">
+            <div class="search__inner container">
+                <input
+                    class="search__input input"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Поиск местоположения"
+                />
+                <span class="visually-hidden">Поиск местоположения</span>
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>

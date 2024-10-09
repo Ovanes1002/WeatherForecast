@@ -1,0 +1,7 @@
+.search {
+    padding-top: 50px;
+
+    &__inner {
+        @include flex-center;
+    }
+}
