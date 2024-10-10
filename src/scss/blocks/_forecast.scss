@@ -1,0 +1,64 @@
+.forecast {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: var(--container-padding-x);
+    border-radius: var(--border-radius);
+    background-color: var(--color-light);
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+
+    &__body {
+        border-top: 2px solid currentColor;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        column-gap: 60px;
+        padding: 20px 10px;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        // row-gap: 5px;
+    }
+
+    .forecast__week-day {
+        font-size: 1.3rem;
+    }
+    .forecast__date {
+        font-size: 0.9rem;
+        color: var(--color-gray);
+    }
+    &__icon {
+        width: 48px;
+        margin: 5px 0 10px;
+    }
+
+    &__temp--day {
+        font-size: 0.9rem;
+    }
+
+    &__temp--night {
+        color: var(--color-gray);
+        font-size: 0.8rem;
+    }
+
+    &__temp--day::after,
+    &__temp--night::after {
+        content: "\00B0";
+        font-weight: 500;
+    }
+
+    &__condition {
+        color: var(--color-gray);
+        font-size: 0.8rem;
+        margin-top: 10px;
+    }
+}

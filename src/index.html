@@ -16,6 +16,17 @@
                 <a href="" class="header__logo logo">
                     <img class="logo__image" src="images/cloud.png" alt="cloud-icon" loading="lazy" />
                 </a>
+                <div class="search">
+                    <div class="search__inner container">
+                        <input
+                            class="search__input input"
+                            type="text"
+                            autocomplete="off"
+                            placeholder="Поиск местоположения"
+                        />
+                        <span class="visually-hidden">Поиск местоположения</span>
+                    </div>
+                </div>
                 <div class="header__theme theme">
                     <label class="theme__label" for="theme">Тема:</label>
                     <select class="theme__select theme__select--light" id="theme" name="theme">
@@ -25,17 +36,102 @@
                 </div>
             </div>
         </header>
-        <div class="search">
-            <div class="search__inner container">
-                <input
-                    class="search__input input"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="Поиск местоположения"
-                />
-                <span class="visually-hidden">Поиск местоположения</span>
-            </div>
-        </div>
+        <main class="content">
+            <section class="section container">
+                <div class="section__body">
+                    <div class="forecast">
+                        <header class="forecast__header">
+                            <h2 class="forecast__title">Погода в Москве</h2>
+                            <p class="forecast__subtitle">Прогноз погоды на 5 дней</p>
+                        </header>
+                        <div class="forecast__body">
+                            <ul class="forecast__list">
+                                <li class="forecast__item">
+                                    <div class="forecast__week-day">Пн</div>
+                                    <time datetime="" class="forecast__date">14 окт</time>
+                                    <img
+                                        class="forecast__icon icon"
+                                        src="./images/cloud.png"
+                                        alt="картинка"
+                                    />
+                                    <div class="forecast__temp forecast__temp--day temp">
+                                        <span class="temp__value">+20</span>
+                                    </div>
+                                    <div class="forecast__temp forecast__temp--night temp">
+                                        <span class="temp__value">+12</span>
+                                    </div>
+                                    <div class="forecast__condition">Облачно</div>
+                                </li>
+                                <li class="forecast__item">
+                                    <div class="forecast__week-day">Пн</div>
+                                    <time datetime="" class="forecast__date">14 окт</time>
+                                    <img
+                                        class="forecast__icon icon"
+                                        src="./images/cloud.png"
+                                        alt="картинка"
+                                    />
+                                    <div class="forecast__temp forecast__temp--day temp">
+                                        <span class="temp__value">+20</span>
+                                    </div>
+                                    <div class="forecast__temp forecast__temp--night temp">
+                                        <span class="temp__value">+12</span>
+                                    </div>
+                                    <div class="forecast__condition">Облачно</div>
+                                </li>
+                                <li class="forecast__item">
+                                    <div class="forecast__week-day">Пн</div>
+                                    <time datetime="" class="forecast__date">14 окт</time>
+                                    <img
+                                        class="forecast__icon icon"
+                                        src="./images/cloud.png"
+                                        alt="картинка"
+                                    />
+                                    <div class="forecast__temp forecast__temp--day temp">
+                                        <span class="temp__value">+20</span>
+                                    </div>
+                                    <div class="forecast__temp forecast__temp--night temp">
+                                        <span class="temp__value">+12</span>
+                                    </div>
+                                    <div class="forecast__condition">Облачно</div>
+                                </li>
+                                <li class="forecast__item">
+                                    <div class="forecast__week-day">Пн</div>
+                                    <time datetime="" class="forecast__date">14 окт</time>
+                                    <img
+                                        class="forecast__icon icon"
+                                        src="./images/cloud.png"
+                                        alt="картинка"
+                                    />
+                                    <div class="forecast__temp forecast__temp--day temp">
+                                        <span class="temp__value">+20</span>
+                                    </div>
+                                    <div class="forecast__temp forecast__temp--night temp">
+                                        <span class="temp__value">+12</span>
+                                    </div>
+                                    <div class="forecast__condition">Облачно</div>
+                                </li>
+                                <li class="forecast__item">
+                                    <div class="forecast__week-day">Пн</div>
+                                    <time datetime="" class="forecast__date">14 окт</time>
+                                    <img
+                                        class="forecast__icon icon"
+                                        src="./images/cloud.png"
+                                        alt="картинка"
+                                    />
+                                    <div class="forecast__temp forecast__temp--day temp">
+                                        <span class="temp__value">+20</span>
+                                    </div>
+                                    <div class="forecast__temp forecast__temp--night temp">
+                                        <span class="temp__value">+12</span>
+                                    </div>
+                                    <div class="forecast__condition">Облачно</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
         <script src="js/script.js"></script>
     </body>
