@@ -24,7 +24,59 @@ import htmlmin from "gulp-htmlmin";
 
 const sassCompiler = gulpSass(sass);
 
-gulp.task("server", function () {
+export const html = () => {
+    return gulp
+        .src("src/index.html")
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest("dist"))
+        .pipe(browserSync.stream());
+};
+
+export const styles = () => {
+    return gulp
+        .src("src/scss/**/*.+(scss|sass)")
+        .pipe(sassCompiler({ outputStyle: "compressed" }).on("error", sassCompiler.logError))
+        .pipe(rename({ suffix: ".min", prefix: "" }))
+        .pipe(autoprefixer())
+        .pipe(cleanCSS({ compatibility: "ie8" }))
+        .pipe(gulp.dest("dist/css"))
+        .pipe(browserSync.stream());
+};
+
+export const scripts = () => {
+    return gulp
+        .src("src/js/*.js")
+        .pipe(
+            babel({
+                presets: ["@babel/preset-env"],
+            })
+        )
+        .pipe(uglify())
+        .on("error", function (err) {
+            console.error("Ошибка при объединении или транспиляции:", err.toString());
+        })
+        .pipe(gulp.dest("dist/js"))
+        .pipe(browserSync.stream());
+};
+
+export const images = () => {
+    return gulp.src(`src/images/**/*`, { encoding: false }).pipe(imagemin()).pipe(gulp.dest(`dist/images`));
+};
+
+export const copy = () => {
+    return gulp
+        .src(["src/fonts/**/*", "src/icons/**/*"], {
+            base: "src",
+        })
+        .pipe(gulp.dest("dist"))
+        .pipe(
+            browserSync.stream({
+                once: true,
+            })
+        );
+};
+
+export const server = () => {
     browserSync.init({
         proxy: "WeatherForecast",
     });
@@ -38,73 +90,14 @@ gulp.task("server", function () {
     gulp.watch("src/js/*.js").on("change", function () {
         browserSync.reload();
     });
-});
+};
 
-gulp.task("styles", function () {
-    return gulp
-        .src("src/scss/**/*.+(scss|sass)")
-        .pipe(sassCompiler({ outputStyle: "compressed" }).on("error", sassCompiler.logError))
-        .pipe(rename({ suffix: ".min", prefix: "" }))
-        .pipe(autoprefixer())
-        .pipe(cleanCSS({ compatibility: "ie8" }))
-        .pipe(gulp.dest("dist/css"))
-        .pipe(browserSync.stream());
-});
+export const watch = () => {
+    gulp.watch("src/index.html").on("change", gulp.series(html));
+    gulp.watch("src/scss/**/*.+(scss|sass|css)", gulp.series(styles));
+    gulp.watch("src/js/*.js").on("change", gulp.series(scripts));
+    gulp.watch("src/js/*.js").on("change", gulp.series(images));
+    gulp.watch(["src/fonts/**/*", "src/icons/**/*"], gulp.series(copy));
+};
 
-gulp.task("watch", function () {
-    gulp.watch("src/scss/**/*.+(scss|sass|css)", gulp.parallel("styles"));
-    gulp.watch("src/index.html").on("change", gulp.parallel("html"));
-    gulp.watch("src/js/*.js").on("change", gulp.parallel("scripts"));
-});
-
-gulp.task("html", function () {
-    return gulp
-        .src("src/index.html")
-        .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest("dist"));
-});
-
-gulp.task("scripts", function () {
-    return (
-        gulp
-            .src("src/js/*.js")
-            .pipe(babel())
-            // .pipe(concat('quiz.min.js'))
-            .pipe(uglify())
-            .on("error", function (err) {
-                console.error("Ошибка при объединении или транспиляции:", err.toString());
-            })
-            .pipe(gulp.dest("dist/js"))
-    );
-});
-
-gulp.task("fonts", function () {
-    return gulp.src("src/fonts/**/*").pipe(gulp.dest("dist/fonts"));
-});
-
-gulp.task("icons", function () {
-    return gulp.src("src/icons/**/*").pipe(gulp.dest("dist/icons"));
-});
-
-gulp.task("images", function () {
-    return gulp.src("src/images/*").pipe(imagemin()).pipe(gulp.dest("dist/images"));
-});
-
-// gulp.task("videos", function () {
-//     return gulp.src("src/videos/*").pipe(gulp.dest("dist/videos"));
-// });
-
-gulp.task(
-    "default",
-    gulp.parallel(
-        "watch",
-        "server",
-        "html",
-        "styles",
-        "fonts",
-        "icons",
-        "scripts",
-        "images"
-        // "videos"
-    )
-);
+export default gulp.series(gulp.parallel(html, styles, scripts, images, copy), gulp.parallel(watch, server));
