@@ -9,6 +9,9 @@ const handleDateData = async function () {
         const newDate = new Date(dateNow); // Создаем новую дату, чтобы не изменять оригинал
         newDate.setDate(currentDate + i);
         dateElements[i].textContent = `${newDate.getDate()} ${months[newDate.getMonth()]}`;
+
+        const isoDate = newDate.toISOString().split("T")[0];
+        dateElements[i].setAttribute("datetime", isoDate);
     }
 };
 

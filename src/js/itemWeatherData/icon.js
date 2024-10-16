@@ -7,9 +7,8 @@ const handleIcon = async function () {
         for (let i = 0; i < noonDataArray.length; i++) {
             // Извлекаем иконку погоды
             const iconCode = noonDataArray[i].weather[0].icon;
-            console.log(iconCode);
-            const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
-            console.log(iconUrl);
+            const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+
             document.querySelectorAll(".forecast__icon")[i].src = iconUrl;
         }
     } else {
@@ -18,8 +17,3 @@ const handleIcon = async function () {
 };
 
 export default handleIcon;
-
-// for (let i = 0; i < noonDataArray.length; i++) {
-//     document.querySelectorAll(".forecast__condition")[i].textContent =
-//         noonDataArray[i].weather[0].description;
-// }
