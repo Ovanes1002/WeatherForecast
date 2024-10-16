@@ -17,7 +17,7 @@ import gulpSass from "gulp-sass";
 import * as sass from "sass";
 import cleanCSS from "gulp-clean-css";
 import autoprefixer from "gulp-autoprefixer";
-import babel from "gulp-babel";
+// import babel from "gulp-babel";
 import uglify from "gulp-uglify";
 import rename from "gulp-rename";
 import htmlmin from "gulp-htmlmin";
@@ -44,19 +44,21 @@ export const styles = () => {
 };
 
 export const scripts = () => {
-    return gulp
-        .src("src/js/*.js")
-        .pipe(
-            babel({
-                presets: ["@babel/preset-env"],
+    return (
+        gulp
+            .src("src/js/**/*.js")
+            // .pipe(
+            //     babel({
+            //         presets: ["@babel/preset-env"],
+            //     })
+            // )
+            .pipe(uglify())
+            .on("error", function (err) {
+                console.error("Ошибка при объединении или транспиляции:", err.toString());
             })
-        )
-        .pipe(uglify())
-        .on("error", function (err) {
-            console.error("Ошибка при объединении или транспиляции:", err.toString());
-        })
-        .pipe(gulp.dest("dist/js"))
-        .pipe(browserSync.stream());
+            .pipe(gulp.dest("dist/js"))
+            .pipe(browserSync.stream())
+    );
 };
 
 export const images = () => {
@@ -87,7 +89,7 @@ export const server = () => {
     gulp.watch("src/scss/**/*.+(scss|sass)").on("change", function () {
         browserSync.reload();
     });
-    gulp.watch("src/js/*.js").on("change", function () {
+    gulp.watch("src/js/**/*.js").on("change", function () {
         browserSync.reload();
     });
 };
@@ -95,8 +97,8 @@ export const server = () => {
 export const watch = () => {
     gulp.watch("src/index.html").on("change", gulp.series(html));
     gulp.watch("src/scss/**/*.+(scss|sass|css)", gulp.series(styles));
-    gulp.watch("src/js/*.js").on("change", gulp.series(scripts));
-    gulp.watch("src/js/*.js").on("change", gulp.series(images));
+    gulp.watch("src/js/**/*.js").on("change", gulp.series(scripts));
+    // gulp.watch("src/js/*.js").on("change", gulp.series(images));
     gulp.watch(["src/fonts/**/*", "src/icons/**/*"], gulp.series(copy));
 };
 

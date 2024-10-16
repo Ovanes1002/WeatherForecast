@@ -1,6 +1,11 @@
-const selectTheme = document.getElementById("theme");
+import handleNoonWeatherData from "./itemWeatherData/handleNoonWeatherData.js";
+import handleMidnightWeatherData from "./itemWeatherData/handleMidnightWeatherData.js";
+import handleNoonConditionData from "./itemWeatherData/condition.js";
+import handleWeekDayData from "./itemWeatherData/weekDay.js";
+import handleDateData from "./itemWeatherData/date.js";
 
-selectTheme.addEventListener("change", () => {
-    selectTheme.classList.toggle("theme__select--light");
-    selectTheme.classList.toggle("theme__select--dark");
-});
+handleNoonWeatherData();
+handleMidnightWeatherData();
+handleNoonConditionData();
+handleWeekDayData();
+handleDateData();

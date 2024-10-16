@@ -52,7 +52,7 @@
 
     &__temp--day::after,
     &__temp--night::after {
-        content: "\00B0";
+        content: "\00B0 C";
         font-weight: 500;
     }
 
