@@ -1,6 +1,6 @@
 import fetchWeatherData from "../fetchWeatherData.js";
 
-const handleNoonConditionData = async function () {
+const handleConditionData = async function () {
     const noonDataArray = await fetchWeatherData("12:00:00");
 
     if (noonDataArray.length > 0) {
@@ -13,4 +13,4 @@ const handleNoonConditionData = async function () {
     }
 };
 
-export default handleNoonConditionData;
+export default handleConditionData;

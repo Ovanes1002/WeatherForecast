@@ -1,8 +1,6 @@
 const handleDateData = async function () {
     const dateNow = new Date();
     const currentDate = dateNow.getDate();
-
-    const currentMonth = dateNow.getMonth();
     const months = ["Янв", "Фев", "Март", "Апр", "Май", "Июнь", "Июль", "Авг", "Сен", "Окт", "Ноя", "Дек"];
 
     const dateElements = document.querySelectorAll(".forecast__date");

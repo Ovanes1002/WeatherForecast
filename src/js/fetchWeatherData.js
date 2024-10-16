@@ -14,7 +14,7 @@ const fetchWeatherData = async function (daytime) {
         if (data.list) {
             // Фильтруем элементы, чтобы выбрать только те, у которых в "dt_txt" время параметр daytime
             const filteredDaytimeItems = data.list.filter((item) => item.dt_txt.includes(daytime));
-            console.log(filteredDaytimeItems);
+            // console.log(filteredDaytimeItems);
             return filteredDaytimeItems;
         } else {
             console.error("List not found in the response.");

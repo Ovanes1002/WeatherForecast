@@ -15,14 +15,3 @@ const handleNoonWeatherData = async function () {
 };
 
 export default handleNoonWeatherData;
-
-// const dateString = "2024-10-12 21:00:00"; // пример даты из API
-
-// // Создаем объект Date из строки даты
-// const date = new Date(dateString);
-
-// // Получаем день недели (0 = воскресенье, 1 = понедельник, ... , 6 = суббота)
-// const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-// const dayOfWeek = daysOfWeek[date.getDay()];
-
-// console.log(dayOfWeek); // Выведет: "Суббота"
