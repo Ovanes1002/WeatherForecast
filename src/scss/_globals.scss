@@ -8,11 +8,14 @@ body {
     background-color: var(--color-light);
     transition-duration: var(--transition-duration);
 
-    &:has(.theme__select--light) {
+    // переключение на светлую тему
+    &:has(option[value="light"]:checked) {
         color: var(--color-dark);
         background-color: var(--color-light-blue);
     }
-    &:has(.theme__select--dark) {
+
+    // переключение на тёмную тему
+    &:has(option[value="dark"]:checked) {
         color: var(--color-light);
         background-color: var(--color-dark-blue);
         .forecast {
