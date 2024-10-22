@@ -1,5 +1,20 @@
 .search {
+    height: 35px;
     &__inner {
-        @include flex-center;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        column-gap: 10px;
+        height: 100%;
+    }
+
+    &__button {
+        border: var(--border);
+        border-radius: var(--border-radius);
+        &:hover {
+            cursor: pointer;
+            background-color: var(--color-gray-alt);
+            transition: var(--transition-duration);
+        }
     }
 }
